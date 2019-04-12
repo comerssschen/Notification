@@ -88,20 +88,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe
     public void onMsgsEvent(FirstEvent events) {
+        MSGBuilder.insert(0, "\r\n");
+        MSGBuilder.insert(0, "\r\n");
+        MSGBuilder.insert(0, "发送人：" + events.getMsg().getOriginatingAddress() + "，短信内容:" + events.getMsg().getDisplayMessageBody() + "，时间：" + TimeUtils.millis2String(events.getMsg().getTimestampMillis()));
+        if (MSGBuilder.length() > 8000) {
+            MSGBuilder.substring(0, 4000);
+        }
+        tv.setText(MSGBuilder);
+
         String bankNum = instance.getString("BankNum");
         if (ObjectUtils.isEmpty(instance.getString("Api")) || ObjectUtils.isEmpty(instance.getString("Userid")) || ObjectUtils.isEmpty(instance.getString("Miyao")) || ObjectUtils.isEmpty(bankNum)) {
 
         } else {
             if (bankNum.length() > 4) {
                 if (events.getMsg().getDisplayMessageBody().contains(bankNum.substring(bankNum.length() - 3))) {
-                    MSGBuilder.insert(0, "\r\n");
-                    MSGBuilder.insert(0, "\r\n");
-                    MSGBuilder.insert(0, "发送人：" + events.getMsg().getOriginatingAddress() + "，短信内容:" + events.getMsg().getDisplayMessageBody() + "，时间：" + TimeUtils.millis2String(events.getMsg().getTimestampMillis()));
-                    if (MSGBuilder.length() > 8000) {
-                        MSGBuilder.substring(0, 4000);
-                    }
-                    tv.setText(MSGBuilder);
-
                     Uploade(events.getMsg());
                 }
             }
