@@ -11,36 +11,8 @@
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginTop="10dp"
         android:text="消息内容" />
-
-    <LinearLayout
-        android:id="@+id/ll_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="api地址" />
-
-        <EditText
-            android:id="@+id/et_key"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="key" />
-
-        <Button
-            android:id="@+id/bt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="保存" />
-
-    </LinearLayout>
-
 
 </LinearLayout>
